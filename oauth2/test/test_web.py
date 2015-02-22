@@ -1,6 +1,7 @@
 from oauth2.test import unittest
 from mock import Mock
-from oauth2.web import Request, Response, Wsgi
+from oauth2.web import Response
+from oauth2.web.wsgi import Request, Server
 from oauth2 import Provider
 
 class RequestTestCase(unittest.TestCase):
@@ -102,7 +103,7 @@ class RequestTestCase(unittest.TestCase):
         self.assertEqual(request.header("unknown", default=0), 0)
 
 
-class WsgiTestCase(unittest.TestCase):
+class ServerTestCase(unittest.TestCase):
     def test_call(self):
         body = "body"
         headers = {"header": "value"}
@@ -125,8 +126,8 @@ class WsgiTestCase(unittest.TestCase):
 
         start_response_mock = Mock()
 
-        wsgi = Wsgi(server=server_mock, authorize_uri=path,
-                    request_class=request_class_mock, env_vars=["myvar"])
+        wsgi = Server(server=server_mock, authorize_uri=path,
+                      request_class=request_class_mock, env_vars=["myvar"])
         result = wsgi(environment, start_response_mock)
 
         request_class_mock.assert_called_with(environment)

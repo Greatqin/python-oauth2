@@ -3,8 +3,9 @@ import json
 from oauth2.client_authenticator import ClientAuthenticator
 from oauth2.compatibility import quote
 from oauth2.test import unittest
-from oauth2.web import Request, Response, ResourceOwnerGrantSiteAdapter, \
+from oauth2.web import Response, ResourceOwnerGrantSiteAdapter, \
     ImplicitGrantSiteAdapter, AuthorizationCodeGrantSiteAdapter
+from oauth2.web.wsgi import Request
 from oauth2.grant import ImplicitGrantHandler, AuthorizationCodeAuthHandler, \
     AuthRequestMixin, AuthorizationCodeTokenHandler, ImplicitGrant, \
     AuthorizationCodeGrant, ResourceOwnerGrantHandler, ResourceOwnerGrant, \

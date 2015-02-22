@@ -6,7 +6,8 @@ from oauth2.grant import AuthorizationCodeGrant, RefreshToken
 from oauth2.test import unittest
 from oauth2.test.functional import NoLoggingHandler
 from oauth2.tokengenerator import Uuid4
-from oauth2.web import Wsgi, AuthorizationCodeGrantSiteAdapter
+from oauth2.web import AuthorizationCodeGrantSiteAdapter
+from oauth2.web.wsgi import Server
 from ..functional import store_factory
 
 
@@ -54,7 +55,7 @@ class AuthorizationCodeTestCase(unittest.TestCase):
 
                 provider.add_grant(RefreshToken(expires_in=60))
 
-                app = Wsgi(server=provider)
+                app = Server(server=provider)
 
                 httpd = make_server('', 15486, app,
                                     handler_class=NoLoggingHandler)
