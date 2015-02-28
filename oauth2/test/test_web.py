@@ -1,7 +1,7 @@
 from oauth2.test import unittest
 from mock import Mock
 from oauth2.web import Response
-from oauth2.web.wsgi import Request, Server
+from oauth2.web.wsgi import Request, Application
 from oauth2 import Provider
 
 class RequestTestCase(unittest.TestCase):
@@ -126,7 +126,7 @@ class ServerTestCase(unittest.TestCase):
 
         start_response_mock = Mock()
 
-        wsgi = Server(server=server_mock, authorize_uri=path,
+        wsgi = Application(server=server_mock, authorize_uri=path,
                       request_class=request_class_mock, env_vars=["myvar"])
         result = wsgi(environment, start_response_mock)
 

@@ -67,7 +67,7 @@ class Request(object):
             return default
 
 
-class Server(object):
+class Application(object):
     HTTP_CODES = {200: "200 OK",
                   301: "301 Moved Permanently",
                   302: "302 Found",

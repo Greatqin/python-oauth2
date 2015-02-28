@@ -8,6 +8,7 @@ Features:
 Improvements:
 
   - Catch unexpected exceptions and respond with a OAuth2 'server_error' ([@wndhydrnt][])
+  - Renamed class acting as entrypoint for WSGI server from 'Server' to 'Application' ([@wndhydrnt][])
 
 Bugfixes:
 
