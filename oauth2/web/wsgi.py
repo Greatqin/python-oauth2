@@ -75,16 +75,16 @@ class Application(object):
                   401: "401 Unauthorized",
                   404: "404 Not Found"}
 
-    def __init__(self, server, authorize_uri="/authorize", env_vars=None,
+    def __init__(self, provider, authorize_uri="/authorize", env_vars=None,
                  request_class=Request, token_uri="/token"):
         self.authorize_uri = authorize_uri
         self.env_vars = env_vars
         self.request_class = request_class
-        self.server = server
+        self.provider = provider
         self.token_uri = token_uri
 
-        self.server.authorize_path = authorize_uri
-        self.server.token_path = token_uri
+        self.provider.authorize_path = authorize_uri
+        self.provider.token_path = token_uri
 
     def __call__(self, env, start_response):
         environ = {}
@@ -102,7 +102,7 @@ class Application(object):
                 if varname in env:
                     environ[varname] = env[varname]
 
-        response = self.server.dispatch(request, environ)
+        response = self.provider.dispatch(request, environ)
 
         start_response(self.HTTP_CODES[response.status_code],
                        list(response.headers.items()))
