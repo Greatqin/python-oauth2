@@ -4,6 +4,7 @@ Features:
 
   - Logging support ([@wndhydrnt][])
   - Each grant accepts its own site adapter (see [Migration notes](http://python-oauth2.readthedocs.org/en/latest/migration.html)) ([@wndhydrnt][])
+  - [Tornado](http://www.tornadoweb.org/) adapter
 
 Improvements:
 

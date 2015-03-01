@@ -100,6 +100,38 @@ class ResourceOwnerGrantSiteAdapter(AuthenticatingSiteAdapter):
     pass
 
 
+class Request(object):
+    """
+    Base class defining the interface of a request.
+    """
+    @property
+    def path(self):
+        """
+        Returns the current path portion of the current uri.
+
+        Used by some grants to determine which action to take.
+        """
+        raise NotImplementedError
+
+    def get_param(self, name, default=None):
+        """
+        Retrieve a parameter from the query string of the request.
+        """
+        raise NotImplementedError
+
+    def header(self, name, default=None):
+        """
+        Retrieve a header of the request.
+        """
+        raise NotImplementedError
+
+    def post_param(self, name, default=None):
+        """
+        Retrieve a parameter from the body of the request.
+        """
+        raise NotImplementedError
+
+
 class Response(object):
     """
     Contains data returned to the requesting user agent.

@@ -3,6 +3,9 @@
 
 """
 Classes for handling a HTTP request/response flow.
+
+.. versionchanged:: 0.8.0
+   Moved from package ``oauth2.web`` to ``oauth2.web.wsgi``.
 """
 
 from oauth2.compatibility import parse_qs
@@ -68,6 +71,12 @@ class Request(object):
 
 
 class Application(object):
+    """
+    Implements WSGI.
+
+    .. versionchanged:: 0.8.0
+       Renamed from ``Server`` to ``Application``.
+    """
     HTTP_CODES = {200: "200 OK",
                   301: "301 Moved Permanently",
                   302: "302 Found",

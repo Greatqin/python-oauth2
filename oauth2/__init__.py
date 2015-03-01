@@ -104,6 +104,7 @@ from oauth2.web import Response
 from oauth2.tokengenerator import Uuid4
 from oauth2.grant import Scope, AuthorizationCodeGrant, ImplicitGrant, \
     ClientCredentialsGrant, ResourceOwnerGrant, RefreshToken
+import traceback
 
 VERSION = "0.8.0"
 
@@ -165,8 +166,10 @@ class Provider(object):
         """
         Checks which Grant supports the current request and dispatches to it.
 
-        :param request: An instance of :class:`oauth2.web.Request`.
-        :param environ: Hash containing variables of the environment.
+        :param request: The incoming request.
+        :type request: :class:`oauth2.web.Request`
+        :param environ: Dict containing variables of the environment.
+        :type environ: dict
 
         :return: An instance of ``oauth2.web.Response``.
         """
