@@ -1,10 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+Use Tornado to serve token requests:
+
+.. literalinclude:: examples/tornado_server.py
+"""
 
 from __future__ import absolute_import
 
-import sys
 from tornado.web import RequestHandler
 
 
