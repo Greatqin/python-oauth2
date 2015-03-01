@@ -50,3 +50,34 @@ has to be rewritten to look similar to the following
    provider = Provider(...)
 
    provider.add_grant(AuthorizationCodeGrant(site_adapter=ExampleSiteAdapter()))
+
+
+WSGI adapter classes refactoring
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+All code that connect ``python-oauth2`` with a WSGI compliant server has been
+moved to the module ``oauth2.web.wsgi``.
+
+Also the class ``Wsgi`` has been renamed to ``Application`` and now expects
+the parameter ``provider`` instead of ``server``.
+
+Before:
+
+.. code-block:: python
+
+    from oauth2.web import Wsgi
+
+    # Instantiating storage and provider...
+
+    app = Wsgi(server=provider)
+
+
+After:
+
+.. code-block:: python
+
+    from oauth2.web.wsgi import Application
+
+    # Instantiating storage and provider...
+
+    app = Application(provider=provider)
