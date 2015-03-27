@@ -13,9 +13,10 @@ Starting from ``0.8.0``, the grants
 :class:`oauth2.grant.ResourceOwnerGrant` expect the parameter ``site_adapter``
 to be passed to them.
 
-:class:`oauth2.Provider` does not accept the parameter ``site_adapter``.
+:class:`oauth2.Provider` does not accept the parameter ``site_adapter``
+anymore.
 
-``oauth2.web.SiteAdapter`` has been deleted.
+The base class ``oauth2.web.SiteAdapter`` does not exist anymore.
 
 Code that looks like this in version ``0.7.0``
 
@@ -44,6 +45,7 @@ has to be rewritten to look similar to the following
    from oauth2.grant import AuthorizationCodeGrant
 
    class ExampleSiteAdapter(AuthorizationCodeGrantSiteAdapter):
+       # Override the methods defined in AuthorizationCodeGrantSiteAdapter to suite your needs
        ...
 
    # No site_adapter anymore
@@ -55,7 +57,7 @@ has to be rewritten to look similar to the following
 WSGI adapter classes refactoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-All code that connect ``python-oauth2`` with a WSGI compliant server has been
+All code to connect ``python-oauth2`` with a WSGI compliant server has been
 moved to the module ``oauth2.web.wsgi``.
 
 Also the class ``Wsgi`` has been renamed to ``Application`` and now expects
